@@ -5,7 +5,10 @@
   "scripts": {
     "start": "node index.js",
     "dev": "nodemon index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build:ui": "rm -rf dist && cd ../../Parte2/parte2 && npm run build && cp -r dist ../../Parte3/render-test",
+    "deploy:full": "npm run build:ui && git add . && git commit -m uibuild && git push",
+    "build:uii": "powershell Remove-Item -Recurse -Force dist && cd '../../Parte2/parte2/' && npm run build && powershell Copy-Item './dist' -Recurse '../../Parte3/render-test'"
   },
   "author": "",
   "license": "ISC",
